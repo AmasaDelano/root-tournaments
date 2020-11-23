@@ -1,0 +1,7 @@
+table.dataTable .odd {
+    background-color: #dddddd;
+}
+
+table.dataTable .even {
+    background-color: #ffffff;
+}
