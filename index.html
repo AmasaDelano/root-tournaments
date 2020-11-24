@@ -18,19 +18,20 @@
 
         <h1>Root Board Game Tournament Results</h1>
         <p>Search below for how different players or factions fared in Root tournaments!</p>
+
         <table id="tournament-players">
             <thead>
                 <tr>
-                    <th>Tournament</th>
-                    <th>Round</th>
-                    <th>Game</th>
-                    <th>Date</th>
-                    <th>Map</th>
-                    <th>Deck</th>
-                    <th>Player</th>
-                    <th>Faction</th>
-                    <th>Final Score</th>
-                    <th>Won/Lost</th>
+                    <th><p>Tournament</p><div class="filter-box"></div></th>
+                    <th><p>Round</p><div class="filter-box"></div></th>
+                    <th><p>Game</p><div class="filter-box"></div></th>
+                    <th><p>Date</p><div class="filter-box"></div></th>
+                    <th><p>Map</p><div class="filter-box"></div></th>
+                    <th><p>Deck</p><div class="filter-box"></div></th>
+                    <th><p>Player</p><div class="filter-box"></div></th>
+                    <th><p>Faction</p><div class="filter-box"></div></th>
+                    <th><p>Final Score</p><div class="filter-box"></div></th>
+                    <th><p>Won/Lost</p><div class="filter-box"></div></th>
                 </tr>
             </thead>
             <tbody>
@@ -122,7 +123,32 @@
 
         <script>
             jQuery("#tournament-players").dataTable({
-                "paging": false
+                "paging": false,
+                "initComplete": function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $("<select><option value=\"\"></option></select>")
+                            .appendTo($(column.header()).find(".filter-box").empty())
+                            .on("change", function (event) {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+                                var searchVal = val
+                                    ? "^" + val + "$"
+                                    : "";
+        
+                                column
+                                    .search(searchVal, true, false)
+                                    .draw();
+
+                                return false;
+                            });
+        
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append("<option value=\"" + d + "\">" + d + "</option>")
+                        });
+                    });
+                }
             });
         </script>
 
