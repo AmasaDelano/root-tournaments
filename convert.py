@@ -3,8 +3,8 @@ import csv
 from datetime import datetime
 
 tournament_name = "Winter Tournament"
-data_file = "data.csv"
-round = "2"
+data_file = "data3.csv"
+round = "3"
 
 # Read CSV data into data structure.
 
@@ -19,7 +19,7 @@ with open(csv_file_path) as csv_file:
         # Create new file with 4 HTML table rows based on the CSV data.
 
         # CSV:
-        #  0: 11/27/2020 18:09:36
+        #  0: 11/27/2020 18:09:36 PM CST
         #  1: Group 6
         #  2: Fall
         #  3: Exiles & Partisans
@@ -74,7 +74,7 @@ with open(csv_file_path) as csv_file:
         html_common_data += group_num + cell_separator
         
         # Date
-        parsed_date = datetime.strptime(row[0], "%m/%d/%Y %H:%M:%S")
+        parsed_date = datetime.strptime(row[0], "%Y/%m/%d %H:%M:%S %p CST")
         formatted_date = parsed_date.strftime("%d %b %Y")
         html_common_data += formatted_date + cell_separator
 
