@@ -109,6 +109,9 @@ with open(csv_file_path) as csv_file:
         # Player 1
         html += row[7] + cell_separator
 
+        # Turn Order 1
+        html += "1" + cell_separator
+
         # Faction 1
         html += getPrettyFaction(row, 7) + cell_separator
 
@@ -121,6 +124,9 @@ with open(csv_file_path) as csv_file:
         # Player 2
         html += html_common_data + row[11] + cell_separator
 
+        # Turn Order 2
+        html += "2" + cell_separator
+
         # Faction 2
         html += getPrettyFaction(row, 11) + cell_separator
 
@@ -132,6 +138,9 @@ with open(csv_file_path) as csv_file:
 
         # Player 3
         html += html_common_data + row[15] + cell_separator
+        
+        # Turn Order 3
+        html += "3" + cell_separator
 
         # Faction 3
         html += getPrettyFaction(row, 15) + cell_separator
@@ -144,6 +153,9 @@ with open(csv_file_path) as csv_file:
 
         # Player 4
         html += html_common_data + row[19] + cell_separator
+
+        # Turn Order 4
+        html += "4" + cell_separator
 
         # Faction 4
         html += getPrettyFaction(row, 19) + cell_separator
