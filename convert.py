@@ -3,8 +3,8 @@ import csv
 from datetime import datetime
 
 tournament_name = "Winter Tournament"
-data_file = "data3.csv"
-round = "3"
+data_file = "data4.csv"
+round = "4"
 
 # Read CSV data into data structure.
 
@@ -70,7 +70,8 @@ with open(csv_file_path) as csv_file:
         html_common_data += round + cell_separator
         
         # Group/Game Number
-        group_num = "".join(filter(str.isdigit, row[1]))
+        # group_num = "".join(filter(str.isdigit, row[1]))
+        group_num = "".join(row[1][-1])
         html_common_data += group_num + cell_separator
         
         # Date
